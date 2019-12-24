@@ -5,7 +5,7 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 import csv
-from hurry.filesize import size
+
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/drive/']
@@ -47,12 +47,7 @@ def main():
             filewriter = csv.writer(csvfile,delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL )
             filewriter.writerow(['File Name', 'File Size'])
             for item in items:
-        
-                #dank = int(item['size'])
-                #dataSize = size(dank)
-            ##print(u'{0} ({1})'.format(item['name'], item['size']+" kb"))
                 filewriter.writerow([item['name'], item['quotaBytesUsed']])
-                #filewriter.writerow((item['size']))
 
 if __name__ == '__main__':
     main()
